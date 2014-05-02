@@ -4,6 +4,8 @@ https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System
 
 and the Gitbook - http://samypesse.github.io/How-to-Make-a-Computer-Operating-System/
 
+I am understanding and rebuilding author's previous work for my better understanding and enhancements(if any, I would contribute to original project)
+
 The OS should not just be a "proof of concept", it should have following features:
 
     Code in C++
