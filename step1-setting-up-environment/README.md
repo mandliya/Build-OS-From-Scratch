@@ -23,7 +23,8 @@ We will create virtual development environment for our project using Vagrant and
     -Once Vagrant and Virtualbox are installed, you need to download the ubuntu lucid32 image for Vagrant.
 
 ```
-     vagrant box add lucid32 http://files.vagrantup.com/lucid32.box   ```
+     vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+```
 Once the Lucid32 image is ready, we need to define our development file using a *Vagrantfile* (https://github.com/mandliya/Build-OS-From-Scratch/blob/master/src/Vagrantfile). This file defines what prerequisites our environment needs.
     -nasm
     -make
