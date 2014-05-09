@@ -6,19 +6,19 @@ Step 1: Set up environment (again taken from original work):
 
 We will create virtual development environment for our project using Vagrant and Virtualbox.   
 
-1. Install Vagrant:
+Step a. Install Vagrant:
     - Vagrant is a free and open-source software for creating and configuring virtual development environments. It can be considered a wrapper around VirtualBox. 
 
     - Get and install Vagrant from http://www.vagrantup.com.
 
-2. Install VirtualBox:
+Step b. Install VirtualBox:
     - Oracle virtualBox is a virtualization software package for x86 and AMD64/Intel64-based computers.
 
     - Vagrant needs Virtual to work. 
     - Download VirtualBox and install from your system at :
       https://www.virtualbox.org/wiki/Downloads.
     
-3. Start and test the development environment.
+Stepc. Start and test the development environment.
 
     -Once Vagrant and Virtualbox are installed, you need to download the ubuntu lucid32 image for Vagrant.
 
