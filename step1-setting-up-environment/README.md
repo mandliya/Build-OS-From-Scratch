@@ -26,12 +26,13 @@ c. Start and test the development environment.
      vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
 ```
 Once the Lucid32 image is ready, we need to define our development file using a *Vagrantfile* (https://github.com/mandliya/Build-OS-From-Scratch/blob/master/src/Vagrantfile). This file defines what prerequisites our environment needs.
+```    
     -nasm
     -make
     -build-essential
     -grub
     -qemu
-
+```
 Start you box using:
 ```
 vagrant up
