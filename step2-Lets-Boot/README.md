@@ -2,7 +2,7 @@ This is NOT my work, I am just following the project- http://samypesse.github.io
 
 I hope to make it more novice friendly and enhance documentation and code if I can. Some of the things I am writing here is borrowed from blog post which I will try to cite in the end of the page. Please make me aware of mistakes.
 
-**The section in the end will explain how we translate this part of process into the code which we are developing  in 'src' folder.
+**The section in the end will explain how we translate this part of process into the code which we are developing  in 'src' folder. ***
 ##Booting Explained
 
 In this section, we will see what is the usual sequence of booting in a UNIX based OS is and then we will explain how we are going to do it.
@@ -12,8 +12,8 @@ When the machine is powered on or restarted the power is supplied to **SMPS(swit
 
 The first instruction it will run is to pass control to **BIOS(Basic Input/Output System)** to do **POST(Power On Self Test)**. Once the control goes to BIOS, it will perform two operations:
 
-* **Run the POST operations
-* Selecting the first boot device.**
+* **Run the POST operations**
+* **Selecting the first boot device.**
 
 **POST operation** Post is a process of checking hardware availability. BIOS will have a list of all the devices which were present in the previous boot. In order to check if a hardware is available for the present booting or not it will send an electric pulse to each and every device in the list that it already have. If an electrical pulse is returned from that device it will come to a conclusion the hardware is working fine and ready for use. If it does not receive a signal from a
 particular device it will treat that device as faulty or it was removed from the system. If any new hardware is attached to the system it will do the same operation to find if its available or not. The new list will be stored in BIOS memory for next boot.
