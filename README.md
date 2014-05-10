@@ -1,4 +1,5 @@
-Goal: To create a UNIX like operating system in C++. I am following the project mentioned here:
+###Goal: To create a UNIX like operating system in C++.
+I am following the project mentioned here:
 
 https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System 
 
