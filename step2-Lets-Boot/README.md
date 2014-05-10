@@ -1,7 +1,8 @@
-Notice: This is NOT my work, I am just following the project- http://samypesse.github.io/How-to-Make-a-Computer-Operating-System/
+This is NOT my work, I am just following the project- http://samypesse.github.io/How-to-Make-a-Computer-Operating-System/
 
 I hope to make it more novice friendly and enhance documentation and code if I can. Some of the things I am writing here is borrowed from blog post which I will try to cite in the end of the page. Please make me aware of mistakes.
 
+**The section in the end will explain how we translate this part of process into the code which we are developing  in 'src' folder.
 ##Booting Explained
 
 In this section, we will see what is the usual sequence of booting in a UNIX based OS is and then we will explain how we are going to do it.
