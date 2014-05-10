@@ -2,36 +2,35 @@ Notice: This is NOT my work, I am just following the project- http://samypesse.g
 
 I hope to make it more novice friendly and enhance documentation and code if I can.
 
-Step 1: Set up environment (again taken from original work):
+##Step 1: Set up environment (again taken from original work):
 
 We will create virtual development environment for our project using Vagrant and Virtualbox.   
 
-1. Install Vagrant:
-    - Vagrant is a free and open-source software for creating and configuring virtual development environments. It can be considered a wrapper around VirtualBox. 
+###a. Install Vagrant:
+Vagrant is a free and open-source software for creating and configuring virtual development environments. It can be considered a wrapper around VirtualBox. 
+Get and install Vagrant from http://www.vagrantup.com.
 
-    - Get and install Vagrant from http://www.vagrantup.com.
-
-2. Install VirtualBox:
-    - Oracle virtualBox is a virtualization software package for x86 and AMD64/Intel64-based computers.
-
-    - Vagrant needs Virtual to work. 
-    - Download VirtualBox and install from your system at :
-      https://www.virtualbox.org/wiki/Downloads.
+###b. Install VirtualBox:
+Oracle virtualBox is a virtualization software package for x86 and AMD64/Intel64-based computers.
+Vagrant needs Virtual to work. 
+Download VirtualBox and install from your system at :
+-https://www.virtualbox.org/wiki/Downloads.
     
-3. Start and test the development environment.
-
-    -Once Vagrant and Virtualbox are installed, you need to download the ubuntu lucid32 image for Vagrant.
+###c. Start and test the development environment.
+Once Vagrant and Virtualbox are installed, you need to download the ubuntu lucid32 image for Vagrant. Type
 
 ```
-     vagrant box add lucid32 http://files.vagrantup.com/lucid32.box   ```
+     vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+```
 Once the Lucid32 image is ready, we need to define our development file using a *Vagrantfile* (https://github.com/mandliya/Build-OS-From-Scratch/blob/master/src/Vagrantfile). This file defines what prerequisites our environment needs.
+```    
     -nasm
     -make
     -build-essential
     -grub
     -qemu
-
-Start you box using:
+```
+Start you box using (from folder where Vagrantfile is placed):
 ```
 vagrant up
 ```
