@@ -35,6 +35,29 @@ The primary boot loader code provides boot loader information and location detai
 Magic Number serve as a validation check for MBR. The 0xAA55 signature is the last two bytes of the first sector of your bootdisk (bootsector/Master Boot Record/MBR). If it is 0xAA55, then the BIOS will try booting the system. If it's not found (it garbled or 0x0000), you'll get an error message from your BIOS that it didn't find a bootable disk (or the system tries booting the next disk). This signature is represented (in binary) as 0b1010101001010101. The
 alternating bit pattern was thought to be a protection against certain failures (drive or controller).
 
+When the valid signature bytes are detected, BIOS transfers control to the `0x7C00`(1 Kib below the 32 Kib mark) memory address (via a jump instruction) in order to execute the primary boot loader code.
+
+Throughout this process the CPU has been running in 16-bit Real Mode (the default state for x86 CPUs in order to maintain backwards compatibility). To execute the 32-bit instructions within our kernel, a bootloader is required to switch the CPU into Protected Mode.
+
+Now, GRUB is booted by machine (The boot-loader) and it will simplify the loading of our kernel stored on the hard disk.
+
+#### What is GRUB?
+> GNU GRUB (short for GNU GRand Unified Bootloader) is a boot loader package from the GNU Project. GRUB is a reference implementation of the Free Software Foundation's Multiboot Specifications, which provides a user the choice to boot one of the multiple operating systems installed on a computer or select a specific kernel configuration available on a particular operating system's partitions.
+
+#### Why GRUB?
+
+* GRUB is very simple to use.
+* We will be easily able to load 32 bit kernels without any need of 16 bit code.
+* Multiboot with Linux, Windows and others.
+* Make it easy to load external modules in memory.
+
+#### How to use GRUB?
+
+* GRUB uses the Multiboot specification, the executable binary should be 32 bits and must contain a special header (multiboot header) in this first 8192 bytes. Our Kernel will be a ELF executable file ("Executable and Linkable Format", a common standard file format for executables in most UNIX systems).
+
+* The first boot 
+
+
 
 [![Screen](https://raw.github.com/SamyPesse/How-to-Make-a-Computer-Operating-System/master/preview.png)](https://raw.github.com/SamyPesse/How-to-Make-a-Computer-Operating-System/master/preview.png)
 
