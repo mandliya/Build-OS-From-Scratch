@@ -206,8 +206,18 @@ The **ia-32(also called Intel-32 or x86-32 or i386)** architecture contain 10 32
   * Lower and higher halves of the above-mentioned four 16-bit registers can be used as eight 8-bit data registers: 
           AH, AL, BH, BL, CH, CL, DH, and DL.
     
-      Some of these registers have specific use in the arithmetic operations:
+   Some of these registers have specific use in the arithmetic operations:
+   **AX- Primary Accumulator**: It is used in input/output and most arithmetic operations,For example, in multiplication operation, one operand is stored in EAX or AX or AL register according to the size of the operand.
+
+   **BX- Base Register**: It could be used for index addressing
+
+   **CX- Count Register**: ECX, CX generally store loop count in iterative operations.
+
+   **DX- Date Registers**: It is also used in input/output operations. It is also used with AX register along with DX for multiply and divide operations involving large values.
+
       
-- Pointer Registers
+- **Pointer Registers**: The pointer registers are 32-bit EIP, ESP and EBP registers and corresponding 16-bit right portions - IP, SP and BP. There are three categories of pointer registers:
+> * **Instruction Pointer**: The 16-bit IP register stores the offset address to the next intruction to be executed. IP in association with CS register (as CS:IP) gives the complete address of the current instruction in the code segment.
+  * **Stack Pointer**: The 16-bit SP register provide the offset value within the 
 - Index Registers
     
