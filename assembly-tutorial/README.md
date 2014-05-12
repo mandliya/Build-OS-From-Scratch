@@ -215,9 +215,8 @@ The **ia-32(also called Intel-32 or x86-32 or i386)** architecture contain 10 32
 
    **DX- Date Registers**: It is also used in input/output operations. It is also used with AX register along with DX for multiply and divide operations involving large values.
 
-<p align="center">
+
 [![Screen](https://raw.githubusercontent.com/mandliya/Build-OS-From-Scratch/master/assembly-tutorial/registers.png)](https://raw.githubusercontent.com/mandliya/Build-OS-From-Scratch/master/assembly-tutorial/registers.png)
-</p>
 
       
 - **Pointer Registers**: The pointer registers are 32-bit EIP, ESP and EBP registers and corresponding 16-bit right portions - IP, SP and BP. There are three categories of pointer registers:
