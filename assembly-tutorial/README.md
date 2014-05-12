@@ -197,9 +197,9 @@ The **ia-32(also called Intel-32 or x86-32 or i386)** architecture contain 10 32
 * **General Registers**:  The general registers are further divided into :
     - **Data Registers** 
         Four 32-bit data registers are used for arithmetic, logical and other operations. These 32-bit registers can be used in three ways:
-            1. As complete 32-bit data registers: EAX, EBX, ECX, EDX
-            2. Lower halves of the 32-bit registers can be used as four 16-bit data registers: AX, BX, CX and DX.
-            3. Lower and higher halves of the above-mentioned four 16-bit registers can be used as eight 8-bit data registers: AH, AL, BH, BL, CH, CL, DH, and DL.
+            - As complete 32-bit data registers: EAX, EBX, ECX, EDX
+            - Lower halves of the 32-bit registers can be used as four 16-bit data registers: AX, BX, CX and DX.
+            - Lower and higher halves of the above-mentioned four 16-bit registers can be used as eight 8-bit data registers: AH, AL, BH, BL, CH, CL, DH, and DL.
     - Pointer Registers
     - Index Registers
     
