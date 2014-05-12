@@ -27,4 +27,55 @@ provide more human-readable abstraction of machine language instructions.
 ###Basic Hardware Features:
 The main internal hardware of a PC  is composed of processor, memory and registers. The **Registers** are components that hold data and address. To execute a program the system copies it from external device to internal memory, then the processor executes the program instructions.
 
-The most fundamental unit of computer storage is a **bit**
+The most fundamental unit of computer storage is a **bit**. However, we use 8 bits together to form a **byte**, and byte is the most basic way of representing the data.  The processor usually supports following data sizes.
+
+- Word:a 2-byte data item
+- Double Word: a 4-byte (32 bit) data item
+- Quadword: an 8-byte (64 bit) data item
+- Paragraph: a 16-byte (128 bit) area
+- Kilobyte: 1024 bytes
+- Megabyte: 1,048,576 bytes
+
+###Addressing Data in Memory
+
+The process through which the processor controls the execution of instructions is referred as the fetch-decode-execute cycle or the execution cycle. It consists of three continuous steps:
++ Fetching the instruction from memory
++ Decoding or identifying the instrution
++ Executing the instruction
+
+The processor may access one or more byte at a time. The bytes are stored in either **Big Endian**(Most significant byte(MSB) of the word in smallest address and least significant in the largest address) or **Little Endian** (most significant byte(MSB) of a word in the largest address and the least significant byte is stored in the smallest address). 
+
+There are two types of memory addresses:
+
+- An absolute address - A direct reference to specific location.
+- The segment address(or offset) - Starting address of memory segment with the offset value.
+
+
+###What will you need for this tutorial:
+
+- A linux environment which has [Netwide Assembler](http://www.nasm.us/) installed. Please visit [this](http://www.nasm.us/) link for installation. 
+
+###Assembly - Basic Syntax
+
+An assembly program can be divided in three sections.
+
+* The **data** section:
+> The data section is used for declaring initialized data or constants. This data does not change at runtime. You can declare various constant values, file names, Buffer sizes etc.
+
+The syntax for declaring data section is 
+'''
+section .data
+'''
+
+* The **bss** section:
+> The bss section is used for declaring variables. The syntax for declaring bss section is:
+
+'''
+section .bss
+'''
+
+* The **text** section:
+> The text section is used for keeping the actual code. This section must begin with the declaration `global _start`, which tells the kernel where the program execution begins.
+
+
+
