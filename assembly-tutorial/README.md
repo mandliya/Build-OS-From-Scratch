@@ -60,21 +60,24 @@ There are two types of memory addresses:
 An assembly program can be divided in three sections.
 
 * The **data** section:
+
 > The data section is used for declaring initialized data or constants. This data does not change at runtime. You can declare various constant values, file names, Buffer sizes etc.
 
 The syntax for declaring data section is 
-'''
+```
 section .data
-'''
+```
 
 * The **bss** section:
+
 > The bss section is used for declaring variables. The syntax for declaring bss section is:
 
-'''
+```
 section .bss
-'''
+```
 
 * The **text** section:
+
 > The text section is used for keeping the actual code. This section must begin with the declaration `global _start`, which tells the kernel where the program execution begins.
 
 
