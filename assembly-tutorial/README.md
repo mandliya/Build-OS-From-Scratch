@@ -80,5 +80,26 @@ section .bss
 
 > The text section is used for keeping the actual code. This section must begin with the declaration `global _start`, which tells the kernel where the program execution begins.
 
+```
+section .text
+global _start
+_start:
+```
+
+
+###Comments
+
+This is important, as comments can be used to explain what a particular section is doing. The comments in assembly begins with a semicolon `;`. Comment may contain any printable character including blank. It can appear on a line like this
+
+```
+; This is a comment in assembly code
+
+```
+
+or something like this
+
+```
+add eax, bax   ; adds eax to bax
+```
 
 
