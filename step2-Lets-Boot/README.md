@@ -55,8 +55,8 @@ Now, GRUB is booted by machine (The boot-loader) and it will simplify the loadin
 
 * GRUB uses the Multiboot specification, the executable binary should be 32 bits and must contain a special header (multiboot header) in this first 8192 bytes. Our Kernel will be a ELF executable file ("Executable and Linkable Format", a common standard file format for executables in most UNIX systems).
 
-* The first boot our kernel is written in Assembly 
-
+* The first boot sequence our kernel is written in Assembly 
+[start.asm](https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System/blob/master/src/kernel/arch/x86/start.asm)
 
 
 [![Screen](https://raw.github.com/SamyPesse/How-to-Make-a-Computer-Operating-System/master/preview.png)](https://raw.github.com/SamyPesse/How-to-Make-a-Computer-Operating-System/master/preview.png)
