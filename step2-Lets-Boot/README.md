@@ -55,7 +55,7 @@ Now, GRUB is booted by machine (The boot-loader) and it will simplify the loadin
 
 * GRUB uses the Multiboot specification, the executable binary should be 32 bits and must contain a special header (multiboot header) in this first 8192 bytes. Our Kernel will be a ELF executable file ("Executable and Linkable Format", a common standard file format for executables in most UNIX systems).
 
-* The first boot 
+* The first boot our kernel is written in Assembly 
 
 
 
