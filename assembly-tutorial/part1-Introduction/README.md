@@ -1,11 +1,6 @@
-##A small assembly primer:
-This tutorial is meant to provide a small introduction to assembly language, which would at least help you understand at least the assembly code we are using in building our operating system.
-
-###Tutorial Reference:
-I have written boiled down here everything here using this tutorial. [Assembly language tutorial](http://www.tutorialspoint.com/assembly_programming/assembly_introduction.htm). These are more useful resources, in case you want to go in detail - [Other useful resources](http://www.tutorialspoint.com/assembly_programming/assembly_useful_resources.htm) 
-
+##Introduction 
 ###What is assembly language?
-Every computer has a microprocessor which is responsible for all the arithmetical, logical and control activities. Each family of processor has its own set of instructions for handling various operations like getting input from keyboard, displaying information on screen, and performing all other necessary jobs. These set of instruction is called **machine language instructions**. 
+> Every computer has a microprocessor which is responsible for all the arithmetical, logical and control activities. Each family of processor has its own set of instructions for handling various operations like getting input from keyboard, displaying information on screen, and performing all other necessary jobs. These set of instruction is called **machine language instructions**. 
 
 Processors understands machine language instructions, which are basically strings of `1's and 0's. However Machine language are too obscure complex and is not human-reading friendly. It is way too complex for any software development. So low-level assembly language is designed for a specific family of processors, that represents various instructions in symbolic code and a more understandable form. We will need an **assembler** eg. NASM to translate this symbolic code to machine
 instructions for machine. Obviously, modern programming languages like 'C,C++ or Java' are higher languages and
