@@ -10,7 +10,7 @@ provide more human-readable abstraction of machine language instructions.
 
 * Interface to programs with OS, processor and BIOS.
 * Representation of data in memory and other external devices.
-* How processor executes and executes instruction.
+* How processor executes instructions.
 * How instructions access and process data.
 * How program accesses external devices.
 
