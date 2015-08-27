@@ -1,6 +1,7 @@
 ##Introduction 
 ###What is assembly language?
-> Every computer has a microprocessor which is responsible for all the arithmetical, logical and control activities. Each family of processor has its own set of instructions for handling various operations like getting input from keyboard, displaying information on screen, and performing all other necessary jobs. These set of instruction is called **machine language instructions**. 
+
+Every computer has a microprocessor which is responsible for all the arithmetical, logical and control activities. Each family of processor has its own set of instructions for handling various operations like getting input from keyboard, displaying information on screen, and performing all other necessary jobs. These set of instruction is called **machine language instructions**. 
 
 Processors understands machine language instructions, which are basically strings of `1's and 0's. However Machine language are too obscure complex and is not human-reading friendly. It is way too complex for any software development. So low-level assembly language is designed for a specific family of processors, that represents various instructions in symbolic code and a more understandable form. We will need an **assembler** eg. NASM to translate this symbolic code to machine
 instructions for machine. Obviously, modern programming languages like 'C,C++ or Java' are higher languages and
@@ -137,6 +138,7 @@ MOV AL,11           ;Transfer the value 11 to the AL register.
 
 Let's finally do some coding.This code will print "Hello World" on the screen. Don't worry if you don't understand here.
 
+
 ```
 section .text
     global _start       ;Must be declared for the linker (ld)
@@ -144,9 +146,8 @@ _start:                 ;Tells the linker the linking point
     mov  edx  len       ;Message length
     mov  ecx  msg       ;Message to print
     mov  ebx  1         ;File descriptor, It is stdout for printing on screen.
-    mov  eax  4         ;System call number (sys_write)
+    mov  eax  4         ;System call number (sys_write)(explained later)
     int 0x80            ;Trap to pass control to kernel
-
     mov eax  1          ;System call for exit (sys_exit)
     int 0x80            ;Control back to kernel
 section .data
@@ -193,29 +194,80 @@ The **ia-32(also called Intel-32 or x86-32 or i386)** architecture contain 10 32
 * Pointer Registers
 * Index Registers
 
-**General Registers**:  The general registers are further divided into :
+###General Registers
 
-- **Data Registers**:Four 32-bit data registers are used for arithmetic, logical and other operations. These 32-bit registers can be used in three ways:
-> * As complete 32-bit data registers: EAX, EBX, ECX, EDX
+The general registers are further divided into :
+
+- **Data Registers**:
+
+	Four 32-bit data registers are used for arithmetic, logical and other operations. These 32-bit registers can be used in three ways:
+  * Complete 32-bit data registers: EAX, EBX, ECX, EDX
   * Lower halves of the 32-bit registers can be used as four 16-bit data registers: AX, BX, CX and DX.
   * Lower and higher halves of the above-mentioned four 16-bit registers can be used as eight 8-bit data registers: 
           AH, AL, BH, BL, CH, CL, DH, and DL.
     
-   Some of these registers have specific use in the arithmetic operations:
-   **AX- Primary Accumulator**: It is used in input/output and most arithmetic operations,For example, in multiplication operation, one operand is stored in EAX or AX or AL register according to the size of the operand.
+   	Some of these registers have specific use in the arithmetic operations:
 
-   **BX- Base Register**: It could be used for index addressing
+   	**AX- Primary Accumulator**: It is used in input/output and most arithmetic operations,For example, in multiplication operation, one operand is stored in EAX or AX or AL register according to the size of the operand.
 
-   **CX- Count Register**: ECX, CX generally store loop count in iterative operations.
+   	**BX- Base Register**: It could be used for index addressing
 
-   **DX- Date Registers**: It is also used in input/output operations. It is also used with AX register along with DX for multiply and divide operations involving large values.
+   	**CX- Count Register**: ECX, CX generally store loop count in iterative operations.
+
+   	**DX- Date Registers**: It is also used in input/output operations. It is also used with AX register along with DX for multiply and divide operations involving large values.
 
 
-[![Screen](https://raw.githubusercontent.com/mandliya/Build-OS-From-Scratch/master/assembly-tutorial/registers.png)](https://raw.githubusercontent.com/mandliya/Build-OS-From-Scratch/master/assembly-tutorial/registers.png)
+	[![Screen](https://raw.githubusercontent.com/mandliya/Build-OS-From-Scratch/master/assembly-tutorial/registers.png)](https://raw.githubusercontent.com/mandliya/Build-OS-From-Scratch/master/assembly-tutorial/registers.png)
 
       
-- **Pointer Registers**: The pointer registers are 32-bit EIP, ESP and EBP registers and corresponding 16-bit right portions - IP, SP and BP. There are three categories of pointer registers:
-> * **Instruction Pointer**: The 16-bit IP register stores the offset address to the next intruction to be executed. IP in association with CS register (as CS:IP) gives the complete address of the current instruction in the code segment.
-  * **Stack Pointer**: The 16-bit SP register provide the offset value within the 
-- Index Registers
+- **Pointer Registers**:
+ 
+	The pointer registers are 32-bit EIP, ESP and EBP registers and corresponding 16-bit right portions - IP, SP and BP. There are three categories of pointer registers:
+
+	- **Instruction Pointer**: The 16-bit IP register stores the offset address to the next instruction to be executed. IP in association with CS (discussed later) register (as CS:IP) gives the complete address of the current instruction in the code segment.
+
+  	- **Stack Pointer**: The 16-bit SP register provide the offset value within the program's stack. Combined with SS(discussed later), this register refers to current position of data or address with program's stack.
+
+	- **Base Pointer**: This is also a 16 bit register. BP is used to referencing the parameter variable passed to a subroutine. SS(discussed later) is used with offset BP to get location of the parameter.
+	
+- **Index Registers**: 32-bit ESI and EDI and their 16-bit lower halves (SI and DI) are used in index addressing and arithmetic operations.
+
+###Control Registers:
+The 32-bit flag register holds the flags denoting various states, they are used in various mathmatical calculations and comparisions. This register along with 32-bit instruction pointer register are called control registers. The common flags in flag register are :
+
+- Some of the flag are:
+
+	- **Overflow Flag (OF)** : This flag is used to indicate overflow of the highest bit of register after a signed arithmetic operation
+
+	- **Direction Flag (DF)** : This flag determines left or right direction for moving and comparing string data. DF = 0 denotes operation would be in left to right direction and DF = 1 denotes right to left. 
+
+	- **Interrupt Flag (IF)** : This flag determines whether external interrupts like I/O requests are to be ignored or not at time. If set to 0 , external interrupts are disabled and when set to 1 interrupts are enabled.
+
+	- **Trap Flag (TF)** : This flag enables single-step mode for the processor. When a system is instructed to single-step, it will execute one instruction and then stop. The contents of registers and memory locations can be examined; if they are correct, the system can be told to go on and execute the next instruction. It is often used in DEBUG mode.
+
+	- **Sign Flag (SF)** : This flag shows sign of the outcome of an arithmetic operation. This flag is set according to the content of result.  A positive result clears the value of SF to 0 and negative result sets it to 1.
+
+	- **Zero Flag (ZF)** : It indicates result of an arithmetic or comparison. A zero result sets it 1 and non-zero result sets it to 0.
+
+	- **Auxiliary Carry Flag (AF)** : This flag is also called half carry flag, it is mainly used for Binary Coded Decimal (BCD) operations. If there is a carry from bit 3 to bit 4 during an addition or subtraction operation, this flag is set. 
+
+	- **Parity Flag (PF)** : This flag represents the number of '1's in the result of an arithmetic operation. An odd number sets the parity flag to 1 and even 1s clears it 0
+	
+	- **Carr Flag (CF)** : It contains 0 or 1 from a higher order bit (leftmost) after an arithmetic operation. It also contains last bit of *shift* or *rotate* operation.
+
+###Segment Registers
+
+Segments registers hold the segment address of various segments defined earlier.
+
+- **Code Segment (CS) Register** : 16-bit register holds the starting address of the code segment, which contains all the instructions to be executed.
+
+- **Data Segment (DS) Register** : 16-bit register holds the starting address of the data segment, which contains data, constant etc.
+
+- **Stack Segment (SS) Register** : 16-bit register holds the starting address of the program stack, which contain return address of the procedures or sub-routines.
+
+There are more segment registers like Extra Segment (ES), FS, GS which provide additional segments for storing data. These segment registers holds the starting address
+of the segment and to reach to reference any memory location, this segment register is combined with an offset value of the location, eg. SS is combined with SP to find exact location of the return address of a subroutine.
+
+
+
     
