@@ -150,7 +150,7 @@ _start:                 ;Tells the linker the linking point
     mov eax  1          ;System call for exit (sys_exit)
     int 0x80            ;Control back to kernel
 section .data
-    msg db 'Hello World', 0xa       ;The hello world string
+    msg db 'Hello World', 0xa       ;The hello world string ,db here is an assembly directive for char
     len equ $ - msg                 ;Length of the string
 ```
 
